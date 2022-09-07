@@ -16,3 +16,6 @@ Git 执行操作时会自动生成 index.lock 文件，操作结束后会自动�
 此时由于我们的修改都已经提交了，所以直接键入“ctrl+x” 离开该界面就可以了，离开界面后，终端提示，commit提交成功
 
 简化这一过程，通过使用” git commit -m “XXXXX” ”命令，就可以跳过nano编辑器直接将git commit附带到提交上，只需要将上述命令中的“XXXXX”环城你想标注的这次提交的commit内容即可
+
+可视化操作：
+vscode会在上翻弹出对话框要求你输入此次提交的commit，将git commit 的内容输入即可
