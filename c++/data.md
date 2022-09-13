@@ -21,3 +21,5 @@ auto processProduct(const Creator& creator) -> decltype(creator.makeObject()) {
  位移运算优先于逻辑位运算
 
  str.resize(k,c);c: 如果k大于字符串的长度，则c是要在新空格中添加的新字符。这是可选参数。
+
+ memset,iota初始化

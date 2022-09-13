@@ -19,3 +19,5 @@ Git 执行操作时会自动生成 index.lock 文件，操作结束后会自动�
 
 可视化操作：
 vscode会在上翻弹出对话框要求你输入此次提交的commit，将git commit 的内容输入即可
+
+git config user.name   git config user.email
