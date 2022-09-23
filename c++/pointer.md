@@ -54,3 +54,10 @@ unique_ptr 拥有它所指向的对象，在某一时刻，只能有一个unique
 多个 shared_ptr 对象可占有同一对象。
 
 右值引用：将亡值
+
+struct listnode{
+    int val;
+    listnode * next;
+    listnode(int x): val(x),next(nullptr){}
+    listnode(int x, listnode * y): val(x),next(y){}
+};
