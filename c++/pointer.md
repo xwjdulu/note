@@ -61,3 +61,13 @@ struct listnode{
     listnode(int x): val(x),next(nullptr){}
     listnode(int x, listnode * y): val(x),next(y){}
 };
+
+const vector<int> cv{ 1, 2, 3, 4, 5, 6 };
+vector本身是const类型，生成的迭代器就必须是const类型。
+数据本身不是const类型，但是从设计的角度来讲有些处理不应该修改该数据。这时也应该要求const类型的迭代器，以避免数据被意外修改。
+C++11为此提供了cbegin和cend方法。
+vector v{1, 2, 3, 4, 5, 6};
+auto it = v.cbegin();
+
+这个函数代码分配一段存储空间，这段存储空间的首地址称为这个函数的地址。
+函数指针：返回类型（*p）(参数) = 
