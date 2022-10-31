@@ -33,3 +33,55 @@ size_t是一些C/C++标准在stddef.h中定义的，size_t类型表示C中任何
     }
     index 代表线段树数组下标，s和e代表区间范围
 线段树：懒操作：set。emplace某个树节点，代表这个区间内都需要变化
+
+前序：
+vector<int> preorderTraversal(TreeNode* root) {
+    vector<int> ans;
+    stack<TreeNode*> stk;
+    stk.push(root);
+    while (stk.size()) {
+        auto t = stk.top();
+        stk.pop();
+        if (!t) continue;
+        ans.push_back(t->val);
+        stk.push(t->right);
+        stk.push(t->left);
+    }
+    return ans;
+}
+后序：
+    while(!st.empty() || root){
+        if(root){
+            st.push(root);
+            root = root->left;
+        }
+        else{
+            root = st.top();
+            st.pop();
+            k--;
+            if(k == 0)
+                return root->val;
+            root = root->right;
+        }
+    }
+注意栈的顺序
+
+树状数组：
+每个二进制的最后一位的大小表示了原本数组的长度和
+所以树状数组下标从1开始
+    void add(int pos){
+        while(pos<vc.size()){
+            vc[pos]++;
+            pos += pos & (-pos);
+        }
+    }
+
+    int query(int pos){
+        int ret = 0;
+        while(pos>0){
+            ret += vc[pos];
+            pos -= pos & (-pos); 
+        }
+        return ret;
+    }
+

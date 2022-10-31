@@ -57,4 +57,48 @@ string += char
 
 int a[10][10];
 fill(a,a+10*10);
+resize会保留该有的值
 
+由于map本身就是按照key进行排序的（默认就是升序），所以，在map中可以直接使用。在map中使用时，lower_bound和upper_bound的功能和之前是一样的。
+auto iter = m.lower_bound(3)
+成员函数的使用和非成员函数
+
+int a[1]
+memset(a,1,a+1);
+不能初始化为1
+memset是以字节为单位就是对array指向的内存的5个字节进行赋值，每个都用ASCII为1的字符去填充，转为二进制后，1就是00000001,占一个字节。一个INT元素是4字节，合一起就是00000001000000010000000100000001，就等于16843009，
+
+equal(first1,end1,first2);
+a = (a+n-1)%n 而不是a = (a-1)%n;
+
+class CL2
+{
+public:
+    void const_method() const;
+    void method();
+private:
+    int x;
+};
+const CL2 co;
+CL2 o;
+co.const_method();  // legal
+co.method();        // illegal, can't call regular method on const object
+o.const_method();   // legal, can call const method on a regulard object
+o.method();         // legal
+
+template<typename T>         //一般换行
+T funcname(const T& a, const T& b) const{           //const & 表示引用
+};
+
+struct pair_hash
+{
+    template <class T1, class T2>
+    std::size_t operator () (const std::pair<T1, T2>  &pair) const
+    {
+        std::size_t h1 = std::hash<T1>()(pair.first);
+        std::size_t h2 = std::hash<T2>()(pair.second);    
+        return h1 ^ h2;
+    }
+};
+
+~0 == -1:是每一位进行取反

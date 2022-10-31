@@ -8,3 +8,4 @@ q827  求满足条件的块，再遍历，假使其翻转
 
 二维数组旋转：1，划分为块  2，翻转：swap
 二维数组的四个方向：vector<vector<int>>(4,vector<int>(2));
+bfs与queue

@@ -71,3 +71,13 @@ auto it = v.cbegin();
 
 这个函数代码分配一段存储空间，这段存储空间的首地址称为这个函数的地址。
 函数指针：返回类型（*p）(参数) = 
+
+在 C 语言中 round 函数用于对浮点数 float 或者 double 或者 longdouble 四舍五入
+round函数的返回是double类型，并非int类型
+
+实例化类的两个方法：
+栈创建：class c = class();用 . 访问成员
+堆创建：class *c = new class() 用->访问成员
+
+upper_bound,lower_bound 原码阅读，自定义cmp函数，没有找到可能返回begin或end
+cmp函数：迭代器里第一个false元素
