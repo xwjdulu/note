@@ -78,6 +78,21 @@ round函数的返回是double类型，并非int类型
 实例化类的两个方法：
 栈创建：class c = class();用 . 访问成员
 堆创建：class *c = new class() 用->访问成员
+注意被调用的类要被提前定义，注意类最后有分号
 
 upper_bound,lower_bound 原码阅读，自定义cmp函数，没有找到可能返回begin或end
 cmp函数：迭代器里第一个false元素
+
+加引用更快
+ti = find_first_of (haystack.begin(), haystack.end(), patt, patt+3);
+s1.find_first_of(s2); find_last_of
+
+左值是一个内存实体，可以&，可以存在很久
+右值没有内存实体，只是临时的，用一次就不用了。
+可以用std::move将右值转换为左值
+
+fill与memset
+匿名函数用了捕获就不要再参数引用了
+
+priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>sell;
+用emplace(p1,p2)代替push_back(make_pair(p1,p2))

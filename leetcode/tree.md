@@ -85,3 +85,4 @@ vector<int> preorderTraversal(TreeNode* root) {
         return ret;
     }
 
+树状数组：bit[i]:存储位置i，i最后一位二进制长度向前数长度的和，用于多次求区间和

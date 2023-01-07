@@ -102,3 +102,11 @@ struct pair_hash
 };
 
 ~0 == -1:是每一位进行取反
+tolower,toupper,对非字母不进行处理原样返回
+
+科学计数法是double型,sizeof 和memset都是给以字节为单位
+memset(g,0,sizeof(g)); //初始化为0
+memset(g,-1,sizeof(g)); //初始化为-1
+memset(g,127,sizeof(g)); //初始化为极大值
+memset(g,128,sizeof(g)); //初始化为极小值,或者memset(g,64,sizeof(g));
+如果补码的符号位为“1”，表示是一个负数，源求原码的操作可以是：符号位为1，其余各位取反，然后再整个数加1。

@@ -39,3 +39,22 @@ x^2=x+1
 y^n = c1*x1^n+c2*x2^n;
 
 m和n的数相乘，长度为m+n(-1),且num1[i]*num2[j]的位置:i+j
+求最大值、最小值：经典二分
+多次求区间和：前缀和，多次求区间最值：单调队列
+
+pair，vector也可参与比较·
+二分法求mid，如果区间内必有答案法，注意应该取较大mid还是较小mid，避免死循环
+
+水塘抽样：
+   int getRandom() {
+        int i = 1, ans = 0;
+        for (auto node = head; node; node = node->next) {
+            if (rand() % i == 0) { // 1/i 的概率选中（替换为答案）
+                ans = node->val;
+            }
+            ++i;
+        }
+        return ans;
+    }
+
+q880:倒推，出口反推入口，变化后反推变化前
