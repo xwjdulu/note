@@ -58,3 +58,43 @@ pair，vector也可参与比较·
     }
 
 q880:倒推，出口反推入口，变化后反推变化前
+q2527,q389,对于位运算，可以独立判断每一位，对于异或，本质判断位上1的个数，判断奇数个数的元素：异或
+
+q1363 从集合中选取大部分：选取少部分  map的key与value，value默认有复杂数据类型
+找到两个奇数出现次的元素，从异或的结果的某一个‘1’位，分类异或。
+
+裴蜀定理，对于a，b d=gcd(a,b); ax+by = d
+证明：令 s= ax+by 是最小非负线性组合 r1 = a%s = a-k*(ax+by),是a，b的线性组合且0=<r1<s 
+则r1 = 0,同理，r2 = b%s = 0,s能同时被a，b整除，得证
+
+q1734,异或交换律，a^b=c c^a = b
+q470 拒绝采样，一直拒绝，直到采样到想要的
+
+小数部分转化二进制，每次乘二，若有1，则置1，否则置0，再不断乘余下的小数
+q1590 取模运算，可以每个数都先取模后再运算
+
+括号里上a下b，是组合数的古典写法，a选b
+(A + B) % mod = ((A % mod) + (B % mod)) % mod
+(A * B) % mod = ((A % mod) * (B % mod)) % mod
+(A - B) % mod =((A % mod) - (B % mod) +mod) % mod
+ while(time){
+    if(time & 1)
+            ans = (res * ans)%mod;
+    res = (res * res)%mod;
+    time >>= 1;
+}
+
+q1969:两数相加为常熟，则相乘的最大最小值！要得最小值：则相差尽可能小
+
+q2584：筛法求质数
+tmp = *max_element(nums.begin(),nums.end()),m = sqrt(tmp);
+for(int i = 2;i<=m;i++){
+    if(flg[i]){
+        prime.emplace_back(i);
+        for(int j = long(i)*i;j<=m;j+=i)
+                flg[j] = false; 
+    }
+}
+1、筛法求质数观察数据大小：一般只求到平方根sqrt（x）（最后x只能有一个比平方根大的质因数）
+2、从i*i开始标记非质数，因为i（i-1）在之前i-1时已被标记
+

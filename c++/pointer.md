@@ -96,3 +96,5 @@ fill与memset
 
 priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>sell;
 用emplace(p1,p2)代替push_back(make_pair(p1,p2))
+
+append(string,pos,len)    append(n,char)

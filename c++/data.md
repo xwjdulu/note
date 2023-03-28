@@ -110,3 +110,19 @@ memset(g,-1,sizeof(g)); //初始化为-1
 memset(g,127,sizeof(g)); //初始化为极大值
 memset(g,128,sizeof(g)); //初始化为极小值,或者memset(g,64,sizeof(g));
 如果补码的符号位为“1”，表示是一个负数，源求原码的操作可以是：符号位为1，其余各位取反，然后再整个数加1。
+
+位运算和逻辑运算优先级低于比较符！(== !=)
+q371
+int getSum(int a, int b) {
+    while(b){
+        unsigned int c = (unsigned int)(a&b)<<1;
+        a = a^b;
+        b = c;
+    }
+    return a;
+}
+int a = -2;
+unsigned int b = a;
+int c = b;  （c == -2）
+负数不可以位运算，可以先赋值给unsigned，unsigned赋值超过范围会自动取模。
+unsigned int 产生编译问题可以打括号
