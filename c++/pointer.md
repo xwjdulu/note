@@ -98,3 +98,49 @@ priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>sell;
 用emplace(p1,p2)代替push_back(make_pair(p1,p2))
 
 append(string,pos,len)    append(n,char)
+
+double cal(int); // prototype
+double (*pf)(int); // 指针pf指向的函数， 输入参数为int,返回值为double
+pf = cal; // 指针赋值
+
+typedef int myint
+typedef voud(* myfun)(int)
+
+
+class Square {
+protected:
+    int length;
+public:
+    Square(int l) : length(l) {};
+    int area() const {
+        return length *length;
+    }
+};
+class Rectangle : public Square{
+private:
+    int height;
+public:
+    Rectangle(int l, int h) : Square(l), height(h) {};
+    int area() const {
+        return Square::area() * 2 + length * height * 4;  // 两个底加四个边
+    }
+};
+int main() {
+    // 创建对象
+    Square s1(2), *pt;
+    Rectangle r1(3, 3);
+    pt = &s1;
+    cout << pt->area() << endl;
+    pt = &r1;
+    cout << pt->area() << endl;
+    Rectangle r2(5,5);
+    cout<<r2.area()<<endl;
+    return 0;
+}
+输出4，9,150
+重写：基类指针   指向派生类对象，会执行派生类的函数，如果没有virtual，则执行基类函数
+隐藏：派生类对象   始终对同名函数，变量执行派生类里的规则
+
+
+
+

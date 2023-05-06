@@ -98,3 +98,47 @@ for(int i = 2;i<=m;i++){
 1、筛法求质数观察数据大小：一般只求到平方根sqrt（x）（最后x只能有一个比平方根大的质因数）
 2、从i*i开始标记非质数，因为i（i-1）在之前i-1时已被标记
 
+//三个数的冒泡排序
+if (a > b) swap(a, b);
+if (b > c) swap(b, c);
+if (a > b) swap(a, b);
+
+分组可为空方法：
+q1641:  把n个目标分割成m组，但最多m-1个组可为空：n+m个目标，，有n+m-1个隔板位，加入m-1个隔板，再从m个组里取出m个目标
+
+q6329 要使num[i+x*n+y*k] == num[i],则num[i] == num[i + z*gcd(k,n)];裴蜀定理
+即数组要满足两个周期，循环数组视为周期为n的周期数组，则要满足gcd(t1,t2)为周期，gcd可以直接调用
+注意求变为一个数，贪心变为中位数就行，不同于q2602,变为某个特定的数需要分成更大更小的数们的前缀和特定的数的差距
+
+单调的连续子数组：
+q6392,q898,q1521:连续子数组的值去重，求每个连续子数组产生的值，暴力思路是枚举每个起点后枚举终点，o(n^2)
+但注意到同一边界的子数组随着长度只会递增或递减，具有单调性，于是我们枚举子数组的值并进行去重：
+q1521：对于每个右边界，有一个数组记录每个左边界到某个右边界的数组值，遍历每个右边界并去重
+int closestToTarget(vector<int>& arr, int target) {
+    vector<int>a;
+    int res = 0x3f3f3f3f; 
+    for(int &x:arr){
+        vector<int>tmp;
+        int pre = -1;
+        for(int &y:a){
+            y &= x;
+            if(pre>=0 && tmp[pre] == y)
+                continue;
+            pre++;
+            tmp.emplace_back(y);
+            res = min(res,abs(y-target));
+        }
+        a = move(tmp);
+        a.emplace_back(x);
+        res =min(res,abs(x-target));
+    }
+    return res;
+}
+q898：是或不是异或！！！
+q6392：1，需要下标信息找到最短子数组，于是使用pair带上下标；2，注意记录数组值优先记录左边界更大的；
+3：原理就是找到第一个gcd(subvector) == 1
+力扣可以直接用gcd(),但库函数是__gcd()
+
+
+
+

@@ -17,4 +17,8 @@ unordered_map<pair<int,int>, int, Hashfunc, Equalfunc> mp;
 增强型for循环不能增删，Java原理：在for each中生成迭代器，modcount(操作次数已经确定)
 function<void()> precompute = [&](){...}; 对于一般的lambda表达式来说，二者使用差异不大，但是对于存在递归的lambda表达式来说，使用auto precompute =[&](){...};会出现问题
 
-vector<int> a(nums.begin(), nums.end());
+vector<int>a(nums.begin(), nums.end());
+unordered_set<string> wordSet(wordList.begin(), wordList.end());
+stable_sort(),
+
+expected parameter declarator 不要把变量定义的像函数(比如vector)

@@ -36,3 +36,17 @@ struct cmp //重写仿函数
 	}
 };	
 priority_queue<node,vector<node>,cmp> prque;
+
+bool cmp(vector<int>&a,vector<int>&b){
+	return a[0]>b[0];
+}
+priority_queue<vector<int>,vector<vector<int>>,decltype(&cmp)> q(cmp);
+
+function<bool(vector<int>&,vector<int>&)> cmp=[](vector<int>&a,vector<int>&b)->bool{
+    return a[0]>b[0];
+};
+auto cmp=[](vector<int>&a,vector<int>&b)->bool{
+    return a[0]>b[0];
+};
+priority_queue<vector<int>,vector<vector<int>>,decltype(cmp)> q(cmp);
+对于test和&test你应该这样理解，test是函数的首地址，它的类型是void )，&test表示一个指向函数test这个对象的地址，它的类型是void (*)O，因此test和&test所代表的地址值是一样的，但类型不一样。test是一个函数，8test表达式的值是一个指针!
