@@ -67,7 +67,6 @@ q1363 从集合中选取大部分：选取少部分  map的key与value，value�
 证明：令 s= ax+by 是最小非负线性组合 r1 = a%s = a-k*(ax+by),是a，b的线性组合且0=<r1<s 
 则r1 = 0,同理，r2 = b%s = 0,s能同时被a，b整除，得证
 
-q1734,异或交换律，a^b=c c^a = b
 q470 拒绝采样，一直拒绝，直到采样到想要的
 
 小数部分转化二进制，每次乘二，若有1，则置1，否则置0，再不断乘余下的小数
@@ -84,27 +83,7 @@ q1590 取模运算，可以每个数都先取模后再运算
     time >>= 1;
 }
 
-q1969:两数相加为常熟，则相乘的最大最小值！要得最小值：则相差尽可能小
 
-q2584：筛法求质数
-tmp = *max_element(nums.begin(),nums.end()),m = sqrt(tmp);
-for(int i = 2;i<=m;i++){
-    if(flg[i]){
-        prime.emplace_back(i);
-        for(int j = long(i)*i;j<=m;j+=i)
-                flg[j] = false; 
-    }
-}
-1、筛法求质数观察数据大小：一般只求到平方根sqrt（x）（最后x只能有一个比平方根大的质因数）
-2、从i*i开始标记非质数，因为i（i-1）在之前i-1时已被标记
-
-//三个数的冒泡排序
-if (a > b) swap(a, b);
-if (b > c) swap(b, c);
-if (a > b) swap(a, b);
-
-分组可为空方法：
-q1641:  把n个目标分割成m组，但最多m-1个组可为空：n+m个目标，，有n+m-1个隔板位，加入m-1个隔板，再从m个组里取出m个目标
 
 q6329 要使num[i+x*n+y*k] == num[i],则num[i] == num[i + z*gcd(k,n)];裴蜀定理
 即数组要满足两个周期，循环数组视为周期为n的周期数组，则要满足gcd(t1,t2)为周期，gcd可以直接调用
@@ -134,10 +113,7 @@ int closestToTarget(vector<int>& arr, int target) {
     }
     return res;
 }
-q898：是或不是异或！！！
-q6392：1，需要下标信息找到最短子数组，于是使用pair带上下标；2，注意记录数组值优先记录左边界更大的；
-3：原理就是找到第一个gcd(subvector) == 1
-力扣可以直接用gcd(),但库函数是__gcd()
+
 
 
 
