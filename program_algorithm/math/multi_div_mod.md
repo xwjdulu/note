@@ -27,5 +27,20 @@ for(int i = 2;i*i<=n;i++){
 1、只求到平方根sqrt（n）（对于一个数x，用较小的那个因数进行标记）
 
 2、j从i*i开始标记非质数，因为i（i-1）在之前i-1时已被标记
+
+lc:2709：预处理每个数有哪些质因数
+
+之后怎么判断连接更快？并查集
+
+文件域是用来声明变量和函数的，不能在这里写个for循环
+```
+#define limit int(1e5+1)
+using ll = long long;
+vector<int>p[limit];
+vector<int>fa;
+vector<int>sz;
+bool init =  false;
+```
 ***
+
 
