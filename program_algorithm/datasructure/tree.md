@@ -61,3 +61,100 @@ int book(int start, int end) {
 }
 ```
 ***
+二维丶边查询边更新丶离散化丶树状数组求区间最大值：
+
+lc2736：
+
+使用map离散化并让序号表示从1到tot表示从大到小
+
+nums1视为x，nums2视为y
+
+把查询和序号，x，y和sum都放入一个二维数组，进行排序
+```
+for(int i= 0;i<m;i++){
+    auto q = queries[i];
+    vc.push_back({mp[q[0]],mp[q[1]],i});
+}
+
+for(int i= 0;i<n;i++){
+    int s = nums1[i]+nums2[i];
+    vc.push_back({mp[nums1[i]],mp[nums2[i]],-s});
+}
+```
+
+依次进行更新或查询，后面的vc[i]一定是更小的x，前面的点都符合要求，再从树状数组里得到前v[1]大的最大值
+***
+lc2547
+```
+const int lmt = 1e3;
+int tree[4*lmt], lazy[4*lmt], pre[lmt+1],pp[lmt+1];
+class Solution {
+public:
+    void spread(int id){
+        int t = lazy[id];
+        lazy[id] = 0;
+        if(t){
+            tree[id*2] += t;
+            lazy[2*id] += t;
+            tree[id*2+1] += t;
+            lazy[2*id+1] += t;
+        }
+        return;
+    }
+    void update(int id,int tl,int tr,int l,int r,int v){
+        if(tl>=l && tr<=r){
+            tree[id] += v;
+            lazy[id] += v;
+            return;
+        }
+        spread(id);
+        int m = (tr+tl)/2;
+        if(m>=l){
+            update(2*id,tl,m,l,r,v);
+        }
+        if(m<r){
+            update(2*id+1,m+1,tr,l,r,v);
+        }
+        tree[id] = min(tree[id*2],tree[id*2+1]);
+        return;
+    }
+    int query(int id,int tl,int tr,int l,int r){
+        if(tl>=l && tr<=r)
+            return tree[id];
+        spread(id);
+        int m = (tr+tl>>1), res = 0x3f3f3f3f;
+        /*
+        if(m>=r)
+            return query(2*id,tl,m,l,r);
+        if(m+1<=l)
+            return query(2*id+1,m+1,tr,l,r);
+        return min(query(2*id,tl,m,l,r),query(2*id+1,m+1,tr,l,r));
+        */
+        if(m>=l){
+            res = min(res,query(id*2,tl,m,l,r));
+        }
+        if(m<r){
+            res = min(res,query(id*2+1,m+1,tr,l,r));
+        }
+        return res;
+    }
+    int minCost(vector<int>& nums, int k) {
+        memset(tree,0,sizeof(tree));
+        memset(lazy,0,sizeof(lazy));
+        memset(pre,0,sizeof(pre));
+        memset(pp,0,sizeof(pp));
+        int n = nums.size(),cur = 0;
+        for(int i = 1;i<=n;i++){
+            int x = nums[i-1];
+            update(1,1,n,i,i,cur);
+            update(1,1,n,pre[x]+1,i,-1);
+            if(pre[x])
+                update(1,1,n,pp[x]+1,pre[x],1);
+            pp[x] = pre[x];
+            pre[x] = i;
+            cur = k+query(1,1,n,1,i);
+        }
+        return cur+n;    
+    }
+};
+```

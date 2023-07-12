@@ -42,5 +42,7 @@ vector<int>sz;
 bool init =  false;
 ```
 ***
+不存在长度为8的素数
+
 
 
